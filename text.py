@@ -20,6 +20,7 @@
 from flask import (Flask, request, jsonify)
 from flask import render_template , request
 ##brk
+print("hi")
 app = Flask(__name__)
 
 # html_page = """<!DOCTYPE HTML>
