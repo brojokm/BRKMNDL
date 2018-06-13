@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/home/brojo/Flask/flask/static/bootstrap4/css/bootstrap.min.css">
+	<script src="/home/brojo/Flask/flask/static/bootstrap4/js/bootstrap.min.js"></script>
+</head>
+<body >
+<!-- <div class="jumbotron jumbotronTop">
+
+<video id="vid" width="300" controls="controls">
+<source src="lec.webm" type="video/mp4">
+</video>
+</div>
+<div class="container">
+  <h2>Button Styles</h2>
+  <input type="button" value="button" class="btn btn-primary">
+  <button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>
+
+
+<p>Click the button to append an item to the end of the list.</p>
+
+<button onclick="myFunction()">Try it</button>
+ -->
+
+<div id="div">
+</div>
+
+
+<!-- <script>
+function myFunction() {
+	// for(i=0;i<3;i++){
+		var div = document.createElement("div");
+	    var node = document.createElement("video");
+	    node.id=Math.floor(Math.random() * 1000);
+	    node.controls = "controls";
+	    node.width=400;
+	    var source = document.createElement("source");
+	    source.src="lec.webm";
+	    source.type="video/mp4";
+	    node.appendChild(source);
+	    node.currentTime=10;
+	    div.appendChild(node);
+	    document.getElementById("div").appendChild(div);
+	// }
+}
+</script> -->
+
+<p><strong>Note:</strong><br>First create an LI node,<br> then create a Text node,<br> then append the Text node to the LI node.<br>Finally append the LI node to the list.</p>
+
+
+<div id="demo">
+<h1>The XMLHttpRequest Object</h1>
+<input type="text" id="mytxt">
+<button type="button" id="myBtn" onclick="loadDoc()">Change Content</button>
+</div>
+
+<script>
+var input = document.getElementById("mytxt");
+	input.addEventListener("keyup", function(event) {
+	    event.preventDefault();
+	    if (event.keyCode === 13) {
+	        document.getElementById("myBtn").click();
+	    }
+	});
+
+</script>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+</script>
+</body>
+</html>
+

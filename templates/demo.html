@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+       
+        <style>
+            body{
+                display: grid;
+                grid-template-columns: 12fr 3fr;
+                grid-template-rows: 12fr 1fr;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="answer" method="POST">
+            <textarea id='passage' placeholder='Your passage here'></textarea>
+            <textarea id='question' placeholder='Your Question here'></textarea>
+            <p id='answer1'>Your answer appears here</p>
+            <!-- <button id='GetAnswer'>Get Answer</button> -->
+            <input type="button" value="Search" id="GetAnswer" onclick="return hit()">
+        </form>
+
+
+       <!--  <script>
+            var button = document.getElementById("GetAnswer");
+            button.onclick = function (){
+                var passage = document.getElementById("passage");
+                var question = document.getElementById("question");
+                console.log("hitting");
+                hit(passage.value, question.value);
+
+            };
+        </script> -->
+
+         <script>
+            function hit(){
+                var xhttp = new XMLHttpRequest();
+                // xhttp.open("POST", '/answer', true);
+                // xhttp.setRequestHeader("Content-type", "application/json");
+                xhttp.onreadystatechange = function () {
+                    console.log(xhttp.status);
+                    if (xhttp.readyState === 4 && xhttp.status === 200) {
+                        var response = JSON.parse(xhttp.responseText);
+                        console.log(response.answer);
+                        var ans = document.getElementById("answer1");
+                        ans.innerHTML = response.answer;
+                    }
+                }
+                xhttp.open("POST", '/answer')
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded") 
+                var passage = document.getElementById("passage").value;
+                var question = document.getElementById("question").value;              
+                // var params = JSON.stringify({"question": question, "passage": passage})
+                var params = 'passage='+passage+'&question='+question
+                xhttp.send(params)
+                console.log("sent")
+            }
+        </script>
+
+    </body>
+</html>

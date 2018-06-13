@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+<title>Search results for </title>
+<head> 			
+ 			<!-- <link rel="stylesheet" href="/static/css/font.css">	 -->
+ 			<link rel="stylesheet" href="/static/css/progress.css">
+ 			<link rel="stylesheet" href="/static/bootstrap4/css/bootstrap.min.css">
+ 			<script src="/static/bootstrap4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Locating Answers in MOOC Videos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">  <a class="nav-link" href="">Home  <span class="sr-only">(current)</span>  </a>  </li>
+            <li class="nav-item">   <a class="nav-link" href="static/about.html">About</a>   </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<div class="container">
+<div class="jumbotron jumbotronTop"> <p><b>Hello!</b> Welcome to our Answer Locating System.  </p>  <p>Here you can search content inside the videos.  </p>  
+</div>
+<div class="jumbotron jumbotronTop">
+   	<!-- <div class="row"> -->
+        <!-- <div class="search"> -->
+        <form action="search" method="POST">
+        	<div class="input-group">
+        	<span class="input-group-addon"></span>
+			<input type="text" name = "query" class="form-control" placeholder="Search" id="searchQuery">
+			<input type="button" value="Search" class="btn btn-info" id="myBtn" onclick="return loadXMLDoc()">
+			<!-- <button type="submit" name = "submit" class="btn btn-primary btn-sm">Search</button> -->
+		</div>
+		</form>
+		<!-- </div> -->
+	<!-- </div> -->
+<br>
+<div id="resultQuery"></div>
+<div id="videos"></div>
+
+<!-- <div id="horizontalProgress">
+    <div id="horizontalProgressBar"></div>
+    <div id="horizontalProgressO"></div>
+</div>
+
+<div id="menu">
+    <a href="#" onClick="ProgressBar.start(); return false;">START</a>
+    <a href="#" onClick="ProgressBar.end(); return false;">END</a>
+</div> -->
+
+</div>
+</div>
+
+
+<script>
+
+// window.ProgressBar = (function (me) {
+//     var ratio = 4;
+//     var speed = 5;
+//     var frequency = 1;
+//     var ease = 'ease';
+//     // PRIVATE VARIABLES
+//     var timeout = null;
+//     var element = null;
+//     var overlay = null;
+//     var current = 0;
+//     var random = function (min, max) {
+//         return Math.floor(Math.random() * (max - min + 1) + min);
+//     };
+//     var time = function () {
+//         return random(1, 6) / speed;
+//     };
+//     var delay = function () {
+//         return random(1, 2) / speed;
+//     };
+//     var frequency = function () {
+//         return random(0, frequency);
+//     };
+//     var width = function () {
+//         var min = current;
+//         var remain = 100 - current;
+//         var distance = Math.floor(remain / ratio);
+//         var max = min + distance;
+//         current = random(min, max);
+//         return current;
+//     };
+//     var next = function () {
+//         var t = time();
+//         var d = delay();
+//         element.style.transitionDuration = t + 's';
+//         element.style.transitionDelay = d + 's';
+//         timeout = setTimeout(function () {
+//             move();
+//         }, ((t * 1000) + (d * 1000)));
+//     };
+//     var move = function () {
+//         element.style.width = width() + '%';
+//         next();
+//     };
+//     me.init = function (params) {
+//         element = params.element;
+//         overlay = params.overlay;
+//         ease = params.ease || ease;
+//         ratio = params.ratio || ratio;
+//         speed = params.speed || speed;
+//         frequency = params.frequency || frequency;
+
+//         overlay.style.opacity = '0';
+//         element.style.opacity = '0';
+//         element.style.transitionDuration = '1s';
+//         element.style.transitionTimingFunction = ease;
+//         element.style.transitionDelay = '0s';
+//     };
+//     me.start = function () {
+//     	alert("start");
+//         current = 0;
+//         element.style.opacity = '1';
+//         element.style.width = current + '%';
+//         overlay.style.opacity = '1';
+//         overlay.style.width = '100%';
+//         next();
+//     };
+
+//     me.end = function () {
+//     	alert("end");
+//         clearTimeout(timeout);
+//         element.style.transitionDuration = '0.5s';
+//         element.style.width = '100%';
+//         setTimeout(function () {
+//             element.style.opacity = '0';
+//             overlay.style.opacity = '0';
+//         }, 1000);
+//         setTimeout(function () {
+//             element.style.width = '0%';
+//             overlay.style.width = '0%';
+//         }, 2000);
+
+//     };
+//     return me;
+// }(window.ProgressBar || {}));
+// 	ProgressBar.init({
+//     element: document.getElementById('horizontalProgressBar'),
+//     overlay: document.getElementById('horizontalProgressO'),
+//     ratio: 4,				// DEFAULT, YOU CAN SKIP IT
+//     speed: 5,				// DEFAULT, YOU CAN SKIP IT
+//     frequency: 1,		// DEFAULT, YOU CAN SKIP IT
+//     ease: 'ease'		// DEFAULT, YOU CAN SKIP IT
+// });
+
+///////////////////////////////////////////
+    
+	var input = document.getElementById("searchQuery");
+	input.addEventListener("keypress", function(event) {
+	    if (event.keyCode === 13) {
+	    	event.preventDefault();
+	        document.getElementById("myBtn").click();
+	        return false;
+	    }
+	});
+
+    function loadXMLDoc(){
+        var xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = function(){
+            if (xhttp.readyState == 4 && xhttp.status == 200){
+                var response = JSON.parse(xhttp.responseText)                 
+                parent = document.getElementById("videos");
+                while (parent.firstChild) {
+    				parent.removeChild(parent.firstChild);
+    			}
+    			var ll = response.result;
+    			len = ll.length;
+                var table = document.createElement("table");
+                table.style="width:100%";
+    			for(i=0;i<len;i++){
+                    var table_row = document.createElement("tr");
+
+                    var table_col1 = document.createElement("td");
+                    var table_col2 = document.createElement("td");
+                    var table_col3 = document.createElement("td");
+
+                    var str = " Text is: " + ll[i][2];
+                    var p = document.createElement("p");
+                    // p.innerText = str;
+
+                    var padding = document.createElement("p")
+                    str = "----";
+                    // padding.innerText = str;
+
+                    // div.appendChild(p);
+                    var div = document.createElement("div");
+				    var node = document.createElement("video");
+				    node.id=ll[i][0];
+				    node.controls = "controls";
+				    node.width=400;
+				    var source = document.createElement("source");
+				    source.src=ll[i][0];
+				    source.type="video/mp4";
+				    node.appendChild(source);
+				    node.currentTime=ll[i][1];
+				    div.appendChild(node);
+				    // parent.appendChild(div); 
+
+                    table_col1.appendChild(div);
+                    table_col2.appendChild(p);
+                    table_col3.appendChild(padding);
+                    table_row.appendChild(table_col1);
+                    // table_row.appendChild(table_col3);
+                    table_row.appendChild(table_col2);
+                    table.appendChild(table_row);
+
+                    parent.appendChild(table);
+				}    
+				var q = "Search Result for <em><b>" + response.query + "</em>";
+			    document.getElementById('resultQuery').innerHTML = q;    
+            }
+        }    
+        xhttp.open('POST', '/search')
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        var q = document.getElementById('searchQuery').value
+        if(q==""){
+        	alert("Search query is Empty!!")
+        }
+        else{
+        	var postVars = 'query='+q
+        	xhttp.send(postVars)
+        	//ProgressBar.start();	
+        }                
+        return false
+    }
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<title>Rough AJAX Test</title>
+<head>
+
+<script>
+
+    function loadXMLDoc()
+    {
+        var xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = function(){
+            if (xhttp.readyState == 4 && xhttp.status == 200){
+                var response = JSON.parse(xhttp.responseText)
+                 
+                parent = document.getElementById("div");
+                while (parent.firstChild) {
+    				parent.removeChild(parent.firstChild);
+    			}
+    			var ll = response.ans;
+    			len = ll.length;
+    			for(i=0;i<len;i++){
+	                var div = document.createElement("div");
+				    var node = document.createElement("video");
+				    node.id=ll[i][0];
+				    node.controls = "controls";
+				    node.width=400;
+				    var source = document.createElement("source");
+				    source.src="static/lec.webm";
+				    source.type="video/mp4";
+				    node.appendChild(source);
+				    node.currentTime=ll[i][1];
+				    div.appendChild(node);
+				    parent.appendChild(div); 
+				}    
+
+			    document.getElementById('myDiv').innerHTML = response.result      
+            }
+        }    
+        xhttp.open('POST', '/search')
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        var un = document.getElementById('scname').value
+        //console.log(sec)
+        var postVars = 'query='+un
+        xhttp.send(postVars)        
+        return false
+    }
+</script>
+</head>
+<body>
+<h1>Flask AJAX Test</h1>
+<form action="" method="POST">
+<input type="text" name="scname" id="scname">
+<input type="button" value="Submit" onclick="return loadXMLDoc()">
+</form>
+<div id="myDiv"></div>
+
+<div id="div">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+body {
+    /* REMOVE THAT IN YOUR PRODUCTION CODE */
+		background: #999;
+}
+
+#menu {
+    /* REMOVE THAT IN YOUR PRODUCTION CODE */
+    position: fixed;
+    z-index: 2;
+}
+
+#menu a {
+    /* REMOVE THAT IN YOUR PRODUCTION CODE */
+   	color: #000;
+		text-decoration: none;
+}
+
+#horizontalProgress {
+    /* CHANGE THIS STYLES AS YOU WISH */
+    position: fixed;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+    z-index: 1;
+}
+
+#horizontalProgressBar {
+    /* DO NOT CHANGE STYLES IN THAT SELECTOR */
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    left: 0px;
+    margin-top: -1px;
+    background: #3A95FF;
+    z-index: 999999;
+    transition: opacity 0.5s, width 0.5s;
+}
+
+#horizontalProgressOverlay {
+    /* DO NOT CHANGE STYLES IN THAT SELECTOR */
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 999998;
+    transition: opacity 1s;
+}
+
+#horizontalProgressOverlay.show {
+    /* DO NOT CHANGE STYLES IN THAT SELECTOR */
+    left: 0%;
+}

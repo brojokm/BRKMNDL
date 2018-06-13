@@ -1,0 +1,215 @@
+<style type='text/css'>
+    
+    /* Use a different font family for search results */
+    .gs-title, .gs-snippet {
+        font-family: courier;
+    }
+    
+    /* Add a border between individual search results */
+    .gs-webResult {
+        border: 1px solid #eee;
+        padding: 1em;
+    }
+    
+    /* Do no display the count of search results */    
+    .gsc-result-info {
+        display: none;
+    }
+    
+    /* Hide the Google branding in search results */
+    .gcsc-branding {
+        display: none; 
+    }
+    
+    /* Hide the thumbnail images in search results */
+    .gsc-thumbnail {
+        display: none;
+    }
+    
+    /* Hide the snippets in Google search results */
+    .gs-snippet { 
+        display: none;
+    }
+    
+    /* Change the font size of the title of search results */
+    .gs-title a { 
+        font-size: 16px;  
+    }
+    
+    /* Change the font size of snippets inside search results */
+    .gs-snippet {
+        font-size: 14px;
+    }
+    
+    /* Google Custom Search highlights matching words in bold, toggle that */
+    .gs-title b, .gs-snippet b {
+        font-weight: normal;
+    }
+    
+    /* Do no display the URL of web pages in search results */
+    .gsc-url-top, .gsc-url-bottom {
+        display: none;
+    }
+    
+    /* Highlight the pagination buttons at the bottom of search results */
+    .gsc-cursor-page {
+        font-size: 1.5em;
+        padding: 4px 8px;
+        border: 2px solid #ccc;
+    }
+
+    .center {
+        margin: auto;
+	margin-left: 9.5%;
+        margin-right: 50%;
+    	width: 40%;
+    	padding: 10px;
+}
+     .gap {
+    	line-height: 100%;
+}
+     .arial{
+	font-family: Arial;
+}
+	.green{
+	color: green;
+	font-size: 14px
+}
+	.gray{
+	color: gray;
+	font-size: 14px
+}
+	.thinfont {
+	font-weight: lighter;
+}
+
+	a:link {
+	    text-decoration: none;
+	}
+
+	a:visited {
+	    text-decoration: none;
+	}
+
+	a:hover {
+	    text-decoration: underline;
+	}
+
+	a:active {
+	    text-decoration: underline;
+	}
+	.font-size {
+	    font-size: 18px;
+	    color: navy
+	}
+
+   .button_box2 {
+   margin:100px auto;
+   
+   }
+   /*-------------------------------------*/
+   .cf:before, .cf:after{
+   content:"";
+   display:table;
+   }
+   .cf:after{
+   clear:both;
+   }
+   .cf{
+   zoom:1;
+   }
+   /*-------------------------------------*/
+   .form-wrapper-2 {
+   width: 800px;
+   padding: 3px;
+   margin-top:2%;
+   margin-left: 10%;
+   margin-right: 50%;
+   background: #555;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 10px;
+   border-radius: 5px;
+   -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+   box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+   }
+   .form-wrapper-2 input {
+   width: 680px;
+   height: 20px;
+   padding: 10px 5px;
+   float: left;
+   font: bold 15px 'Raleway', sans-serif;
+   border: 0;
+   background: #fff;
+   -moz-border-radius: 3px 0 0 3px;
+   -webkit-border-radius: 3px 0 0 3px;
+   border-radius: 3px 0 0 3px;
+   }
+   .form-wrapper-2 input:focus {
+   outline: 0;
+   background: #fff;
+   -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+   -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+   box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+   }
+   .form-wrapper-2 input::-webkit-input-placeholder {
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
+   }
+   .form-wrapper-2 input:-moz-placeholder {
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
+   }
+   .form-wrapper-2 input:-ms-input-placeholder {
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
+   }
+   .form-wrapper-2 button {
+   overflow: visible;
+   position: relative;
+   float: right;
+   border: 0;
+   padding: 0;
+   cursor: pointer;
+   height: 40px;
+   width: 110px;
+   font: bold 15px/40px 'Raleway', sans-serif;
+   color: #fff;
+   text-transform: uppercase;
+   background: #0080ff;
+   -moz-border-radius: 0 3px 3px 0;
+   -webkit-border-radius: 0 3px 3px 0;
+   border-radius: 0 3px 3px 0;
+   text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+   }
+   .form-wrapper-2 button:hover{
+   background: #0000ff;
+   }
+   .form-wrapper-2 button:active,
+   .form-wrapper-2 button:focus{
+   background: #0080ff;
+   }
+   .form-wrapper-2 button:before {
+   content: '';
+   position: absolute;
+   border-width: 8px 8px 8px 0;
+   border-style: solid solid solid none;
+   border-color: transparent #0080ff transparent;
+   top: 12px;
+   left: -6px;
+   }
+   .form-wrapper-2 button:hover:before{
+   border-right-color: #0080ff;
+   }
+   .form-wrapper-2 button:focus:before{
+   border-right-color: #0080ff;
+   }
+   .form-wrapper-2 button::-moz-focus-inner {
+   border: 0;
+   padding: 0;
+   }
+    
+</style>
